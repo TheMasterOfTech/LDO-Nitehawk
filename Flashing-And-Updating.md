@@ -42,8 +42,11 @@
      4. By following the above instructions, you will have uploaded Katapult, but erased all other firmware (including any previously installed Klipper firmware).
      5. Exit the Katapult bootloader by **single pressing** the `RESET` button, this would then normally have the Nitehawk enter Klipper firmware, however, since you just erased Klipper, you will just re-enter the Katapult bootloader.
      6. You are now ready to compile and flash Klipper.
-    
-### _Flashing Klipper_
+
+### Installing Klipper (MANDATORY)
+## _Compiling Klipper_
+
+## _Flashing Klipper_
 1. Ensure the Nitehawk is in the Katapult bootloader mode (the `ACT` light should blink slowly to enter the Katapult bootloader by **quickly double pressing** the ``RESET`` button on the toolboard.
 2. Run `ls /dev/serial/by-id` to find the USB ID of your Nitehawk toolboard. You should see something like: `usb-katapult_rp2040_A1234567898D1234-if00` which is the USB serial address of Nitehawk running the Katapult bootloader.
    - ⚠️ **This is crucial, you need it to be in Bootloader mode before flashing Klipper! Think of it as when installing a Windows OS image for the first time on a brand new PC.**
@@ -56,5 +59,3 @@
    ```
 4. If you encounter any connection issues after flashing the new firmware, ensure your Nitehawk has exited out of Katapult bootloader mode by running the `ls /dev/serial/by-id` command. If you see something like `usb-katapult_rp2040_A1234567898D1234-if00`, your Nitehawk is still in Katapult bootloader mode, however, if you see something like `usb-Klipper_rp2040_E6626005A71FA435-if00`, your Nitehawk is already out of Bootloader mode and you just need to perform a firmware restart.
 5. Your Nitehawk should now have updated to the latest version of Klipper! To verify, sign into your printer's management portal (Mainsail, Fluidd, etc.) and navigate to the area where it lists the Nitehawk's currently installed Klipper version. If it matches your host's Klipper version, you're done! Congratulations!
-
-   
