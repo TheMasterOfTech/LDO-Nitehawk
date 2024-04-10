@@ -12,6 +12,7 @@ The following instructions are for compiling and flashing new Klipper firmware t
    ```
 2. In the configurator, select `Enable extra low-level configuration options`, choose `Raspberry Pi RP2040` and ensure all other settings match the rest of the settings depicted within the screenshot below:
 <img src="https://github.com/TheMasterOfTech/LDO-Nitehawk/blob/main/klipper_make_settings.png" width="500" height="300" />
+
    - **⚠️ Most importantly, make sure you set the `16KiB  bootloader offset`. Otherwise, you will erase the Katapult bootloader!**
 4. Enter `Q` to quit and confirm with `Yes` when prompted to save.
 5. Run the following commands to generate the firmware file:
