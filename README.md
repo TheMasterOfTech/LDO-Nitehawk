@@ -1,0 +1,1 @@
+Helpful resources relating to the LDO Nitehawk SB Toolhead Board. For wiring and other diagrams, please refer to <a href="https://docs.ldomotors.com/en/voron/nitehawk-sb#compiling-klipper-firmware" target="_blank">official documenation as listed by LDO </a>
