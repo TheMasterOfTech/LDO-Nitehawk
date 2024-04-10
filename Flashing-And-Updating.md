@@ -1,5 +1,5 @@
 # LDO Nitehawk Flashing Instructions
-_Generated based on the <a href="https://docs.ldomotors.com/en/voron/nitehawk-sb#compiling-klipper-firmware">official documenation as listed by LDO</a>, with corrections to the previous/current documentation._
+_Generated based on the <a href="https://docs.ldomotors.com/en/voron/nitehawk-sb#compiling-klipper-firmware" target="_blank">official documenation as listed by LDO </a>, with corrections to the previous/current documentation._
 
 ## Installing Klipper (MANDATORY)
 The following instructions are for compiling and flashing new Klipper firmware to your Nitehawk toolboard. You need to perform these steps if you want to update your Klipper firmware to the newest version or if you are doing a fresh install and your Nitehawk only currently possesses Katapult at this time. Before compiling the firmware, you will need to have Klipper already installed on your host device (e.g. Raspberry Pi).
