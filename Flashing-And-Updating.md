@@ -11,14 +11,15 @@ The following instructions are for compiling and flashing new Klipper firmware t
    make menuconfig
    ```
 2. In the configurator, select `Enable extra low-level configuration options`, choose `Raspberry Pi RP2040` and ensure all other settings match the rest of the settings depicted within the screenshot below:
+<img src="https://github.com/TheMasterOfTech/LDO-Nitehawk/blob/main/klipper_make_settings.png" width="500" height="300" />
    - **⚠️ Most importantly, make sure you set the `16KiB  bootloader offset`. Otherwise, you will erase the Katapult bootloader!**
-3. Enter `Q` to quit and confirm with `Yes` when prompted to save.
-4. Run the following commands to generate the firmware file:
+4. Enter `Q` to quit and confirm with `Yes` when prompted to save.
+5. Run the following commands to generate the firmware file:
    ```
    make clean
    make
    ```
-5. A firmware file called `klipper.bin` will now be generated and can be located in the directory `~/klipper/out`. You are now ready to upload the Klipper firmware to the Nitehawk toolboard. Follow the directions below to accomplish flashing Klipper.
+6. A firmware file called `klipper.bin` will now be generated and can be located in the directory `~/klipper/out`. You are now ready to upload the Klipper firmware to the Nitehawk toolboard. Follow the directions below to accomplish flashing Klipper.
 
 ### _Flashing Klipper_
 1. Ensure the Nitehawk is in the Katapult bootloader mode (the `ACT` light should blink slowly when in this mode). If you need to enter the Katapult bootloader mode, enter it by **quickly double pressing** the ``RESET`` button on the toolboard.
