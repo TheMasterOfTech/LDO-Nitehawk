@@ -1,6 +1,7 @@
 # LDO Nitehawk Flashing Instructions
+_Generated based on the official documenation as listed by LDO, with corrections to the previous/current documentation._
 
-## Installing Klipper (**MANDATORY**)
+## Installing Klipper (MANDATORY)
 The following instructions are for compiling and flashing new Klipper firmware to your Nitehawk toolboard. You need to perform these steps if you want to update your Klipper firmware to the newest version or if you are doing a fresh install and your Nitehawk only currently possesses Katapult at this time. Before compiling the firmware, you will need to have Klipper already installed on your host device (e.g. Raspberry Pi).
 
 ### _Compiling Klipper_
@@ -34,7 +35,7 @@ The following instructions are for compiling and flashing new Klipper firmware t
 5. If you encounter any connection issues after flashing the new firmware, ensure your Nitehawk has exited out of Katapult bootloader mode by running the `ls /dev/serial/by-id` command to verify. If you see something like `usb-katapult_rp2040_A1234567898D1234-if00`, your Nitehawk is still in Katapult bootloader mode, however, if you see something like `usb-Klipper_rp2040_E6626005A71FA435-if00`, your Nitehawk is already out of Bootloader mode and in Klipper mode. Proceed to perform a firmware restart.
 6. Your Nitehawk should now have updated to the latest version of Klipper! To confirm, sign into your printer's management portal (Mainsail, Fluidd, etc.) and navigate to the area where it lists the Nitehawk's currently installed Klipper version. If it matches your host's Klipper version, you're done! Congratulations!
 
-## Installing Katapult (only do if necessary)
+## Installing Katapult (NECESSITY ONLY)
 In this section we will compile the Katapult Bootloader. Note that your Nitehawk toolboard normally ships with Katapult pre-installed and **you only need to perform the following operations if Katapult was inadvertently overwritten or lost**. 
 
 ### _Compiling Katapult_
