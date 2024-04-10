@@ -17,27 +17,28 @@ The following instructions are for compiling and flashing new Klipper firmware t
    make clean
    make
    ```
-5. A firmware file called `klipper.bin` will now be generated and can be located in the directory ~/klipper/out. You are now ready to upload the Klipper firmware to the Nitehawk toolboard. Follow the directions below to accomplish flashing Klipper.
+5. A firmware file called `klipper.bin` will now be generated and can be located in the directory `~/klipper/out`. You are now ready to upload the Klipper firmware to the Nitehawk toolboard. Follow the directions below to accomplish flashing Klipper.
 
 ### _Flashing Klipper_
-1. Ensure the Nitehawk is in the Katapult bootloader mode (the `ACT` light should blink slowly to enter the Katapult bootloader by **quickly double pressing** the ``RESET`` button on the toolboard.
-2. Run `ls /dev/serial/by-id` to find the USB ID of your Nitehawk toolboard. You should see something like: `usb-katapult_rp2040_A1234567898D1234-if00` which is the USB serial address of Nitehawk running the Katapult bootloader.
+1. Ensure the Nitehawk is in the Katapult bootloader mode (the `ACT` light should blink slowly when in this mode). If you need to enter the Katapult bootloader mode, enter it by **quickly double pressing** the ``RESET`` button on the toolboard.
+2. Run `ls /dev/serial/by-id` to find the USB ID of your Nitehawk toolboard. You should see something like: `usb-katapult_rp2040_A1234567898D1234-if00` which is the USB serial address of Nitehawk currently running the Katapult bootloader.
    - ⚠️ **This is crucial, you need it to be in Bootloader mode before flashing Klipper! Think of it as when installing a Windows OS image for the first time on a brand new PC.**
 3. Run `pip install pyserial`. _This will install the pyserial python module if it is not present._
+4. Run the following commands to upload the Klipper firmware to the Nitehawk MCU directly:
    ```
    cd ~/klipper
    sudo service klipper stop
    make flash FLASH_DEVICE=/dev/serial/by-id/usb-katapult_rp2040_<your_USB_ID_suffix_from_step_2_here>
    sudo service klipper start
    ```
-4. If you encounter any connection issues after flashing the new firmware, ensure your Nitehawk has exited out of Katapult bootloader mode by running the `ls /dev/serial/by-id` command. If you see something like `usb-katapult_rp2040_A1234567898D1234-if00`, your Nitehawk is still in Katapult bootloader mode, however, if you see something like `usb-Klipper_rp2040_E6626005A71FA435-if00`, your Nitehawk is already out of Bootloader mode and you just need to perform a firmware restart.
-5. Your Nitehawk should now have updated to the latest version of Klipper! To verify, sign into your printer's management portal (Mainsail, Fluidd, etc.) and navigate to the area where it lists the Nitehawk's currently installed Klipper version. If it matches your host's Klipper version, you're done! Congratulations!
+5. If you encounter any connection issues after flashing the new firmware, ensure your Nitehawk has exited out of Katapult bootloader mode by running the `ls /dev/serial/by-id` command to verify. If you see something like `usb-katapult_rp2040_A1234567898D1234-if00`, your Nitehawk is still in Katapult bootloader mode, however, if you see something like `usb-Klipper_rp2040_E6626005A71FA435-if00`, your Nitehawk is already out of Bootloader mode and in Klipper mode. Proceed to perform a firmware restart.
+6. Your Nitehawk should now have updated to the latest version of Klipper! To confirm, sign into your printer's management portal (Mainsail, Fluidd, etc.) and navigate to the area where it lists the Nitehawk's currently installed Klipper version. If it matches your host's Klipper version, you're done! Congratulations!
 
 ## Installing Katapult (only do if necessary)
-In this section we will compile the Katapult Bootloader. Note that your Nitehawk toolboard normally ships with Katapult pre-installed and you only need to perform the following operations if Katapult was inadvertently overwritten or lost. 
+In this section we will compile the Katapult Bootloader. Note that your Nitehawk toolboard normally ships with Katapult pre-installed and **you only need to perform the following operations if Katapult was inadvertently overwritten or lost**. 
 
 ### _Compiling Katapult_
-1. Log on to your Klipper host (your Raspberry Pi) via SSH, windows users can use putty or any other SSH client. Mac and Linux users can simply connect with the ssh command in their command line terminal. Download Katapult by entering `git clone https://github.com/Arksine/katapult`. **_If you already have Katapult on your Nitehawk, please ignore and proceed to step 3._**
+1. Log on to your Klipper host (your Raspberry Pi) via SSH, windows users can use putty or any other SSH client. Mac and Linux users can simply connect with the ssh command in their command line terminal. Download the latest version of Katapult by entering `git clone https://github.com/Arksine/katapult`.
 2. Run the following:
    ```
    cd katapult
@@ -52,13 +53,13 @@ In this section we will compile the Katapult Bootloader. Note that your Nitehawk
    make clean
    make
    ```
-6. A binary file called `katapult.uf2` will now be created in the location `~/katapult/out/`. Katapult is now compiled ready to be flashed.
+6. A binary file called `katapult.uf2` will now be created in the location `~/klipper/katapult/out/`. Katapult is now compiled ready to be flashed.
 
 ### _Flashing Katapult_
 1. Boot the Nitehawk toolboard into system boot mode by following the below substeps:
    1. Press and hold both the `RESET` and `BOOT0` button.
    2. Release the `RESET` button, followed by then the `BOOT0` button.
-   3. If done correctly, your Nitehawk should now have entered boot mode and become a sort of semi “thumbdrive”. Run the command `ls /dev/sda*` to confirm. You should see something like `/dev/sda/ dev/sda1`.
+   3. If done correctly, your Nitehawk should now have entered system boot mode and become a sort of semi “thumbdrive”. Run the command `ls /dev/sda*` to confirm. You should see something like `/dev/sda/ dev/sda1`.
          - _If you get something like `ls: cannot access '/dev/sda*': No such file or directory` this means either Nitehawk didn't enter boot mode or there is a problem with the physical connection between the Raspberry Pi and Nitehawk._
 2. Start the flashing process with the following command(s):
    ```
